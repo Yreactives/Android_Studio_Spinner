@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private Spinner _spinner1, _spinner2, _spinner3, _spinner4;
+    private Spinner _spinner1, _spinner2, _spinner3, _spinner4, _spinner5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +22,13 @@ public class MainActivity extends AppCompatActivity {
         _spinner2 = (Spinner) findViewById(R.id.spinner2);
         _spinner3 = (Spinner) findViewById(R.id.spinner3);
         _spinner4 = (Spinner) findViewById(R.id.spinner4);
+        _spinner5 = (Spinner) findViewById(R.id.spinner5);
 
         initSpinner1();
         initSpinner2();
         initSpinner3();
         initSpinner4();
+        initSpinner5();
     }
 
     private void initSpinner1(){
@@ -65,5 +67,24 @@ public class MainActivity extends AppCompatActivity {
         }
         ArrayAdapter<String> arrayAdapter4 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, genaplist);
         _spinner4.setAdapter(arrayAdapter4);
+    }
+    private void initSpinner5(){
+        List<String> primaList = new ArrayList<>();
+
+        for(int i = 1; i<= 1000; i++){
+            Boolean a = false;
+            for (int j = 2; j < i; j++){
+                if (i % j == 0) {
+                    a = true;
+                    break;
+                }
+            }
+            if (a == false){
+                primaList.add("Bilangan ke-" + i);
+            }
+
+        }
+        ArrayAdapter<String> arrayAdapter4 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, primaList);
+        _spinner5.setAdapter(arrayAdapter4);
     }
 }
